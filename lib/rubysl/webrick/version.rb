@@ -1,5 +1,5 @@
 module RubySL
-  module Webrick
-    VERSION = "0.0.1"
+  module WEBrick
+    VERSION = "2.0.0"
   end
 end

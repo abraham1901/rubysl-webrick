@@ -3,7 +3,7 @@ require './lib/rubysl/webrick/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rubysl-webrick"
-  spec.version       = RubySL::Webrick::VERSION
+  spec.version       = RubySL::WEBrick::VERSION
   spec.authors       = ["Brian Shirai"]
   spec.email         = ["brixen@gmail.com"]
   spec.description   = %q{Ruby standard library webrick.}
