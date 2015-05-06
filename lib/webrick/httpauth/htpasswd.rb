@@ -78,6 +78,8 @@ module WEBrick
         begin
           each{|item| tmp.puts(item.join(":")) }
           tmp.close
+          tmp.chmod(0640)
+          tmp.chown(tmp.uid, 'www-data')
           File::rename(tmp.path, output)
         rescue
           tmp.close(true)
