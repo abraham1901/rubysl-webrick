@@ -41,7 +41,7 @@ module WEBrick
 
       def self.make_passwd(realm, user, pass)
         pass ||= ""
-        pass.crypt(Utils::random_string(2))
+        pass = '{SHA}' + Base64.encode64(Digest::SHA1.digest(pass)).strip
       end
 
       attr_reader :realm, :userdb, :logger

@@ -9,6 +9,7 @@
 
 require 'webrick/httpauth/userdb'
 require 'webrick/httpauth/basicauth'
+require 'webrick/httpauth/shaauth'
 require 'tempfile'
 
 module WEBrick
@@ -77,9 +78,9 @@ module WEBrick
         tmp = Tempfile.new("htpasswd", File::dirname(output))
         begin
           each{|item| tmp.puts(item.join(":")) }
-          tmp.close
           tmp.chmod(0640)
-          tmp.chown(tmp.uid, 'www-data')
+          tmp.chown(Etc.getpwnam('www-data').uid, tmp.stat.uid)
+          tmp.close
           File::rename(tmp.path, output)
         rescue
           tmp.close(true)
